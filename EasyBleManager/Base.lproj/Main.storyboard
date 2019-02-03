@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EasyBleManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Oss-ds-rYd"/>
+                        <viewControllerLayoutGuide type="bottom" id="wTF-2c-Rk5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sn3-4Q-fv6">
+                                <rect key="frame" x="147.5" y="100" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="5ZT-hH-7oT"/>
+                                    <constraint firstAttribute="height" constant="30" id="NvJ-E6-yeT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="扫描连接"/>
+                                <connections>
+                                    <action selector="connectBle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ot7-ld-GJ1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lx-zy-Mdg">
+                                <rect key="frame" x="147.5" y="160" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="okt-aA-ubc"/>
+                                    <constraint firstAttribute="height" constant="30" id="zxm-bw-Yfu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="读取数据"/>
+                                <connections>
+                                    <action selector="readData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="06R-j5-gvg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6s-UP-kr4">
+                                <rect key="frame" x="147.5" y="220" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4EE-Va-bWm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="brV-Kx-V1d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="写入数据"/>
+                                <connections>
+                                    <action selector="writeData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h6v-Td-oeD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9lx-zy-Mdg" firstAttribute="top" secondItem="sn3-4Q-fv6" secondAttribute="bottom" constant="30" id="7Fp-AU-KYW"/>
+                            <constraint firstItem="sn3-4Q-fv6" firstAttribute="top" secondItem="Oss-ds-rYd" secondAttribute="bottom" constant="80" id="LH0-et-LQf"/>
+                            <constraint firstItem="sn3-4Q-fv6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VLE-bX-o5P"/>
+                            <constraint firstItem="9lx-zy-Mdg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bYw-s2-ouD"/>
+                            <constraint firstItem="r6s-UP-kr4" firstAttribute="top" secondItem="9lx-zy-Mdg" secondAttribute="bottom" constant="30" id="iDL-kq-qSe"/>
+                            <constraint firstItem="r6s-UP-kr4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jrE-gm-HIp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+</document>
