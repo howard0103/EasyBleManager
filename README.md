@@ -5,16 +5,17 @@ iOS蓝牙模块(Ble4.0)Swift版本
 swift项目中简单快速的集成iOS蓝牙模块
 
 ## 功能
-1 同步获取蓝牙状态，使用更加的灵活和便捷
-2 扫描设备和连接设备
-3 可配置指定的设备名称
-4 扫描和连接超时设置
-5 添加设备准备就绪状态，设备连接成功后，并不能直接读写操作，要等设备准备就绪后，就随时可以读写操作
-6 方便简单的读写操作
+-  同步获取蓝牙状态，使用更加的灵活和便捷
+-  扫描设备和连接设备
+-  可配置指定的设备名称、设备可被发现的Service
+-  扫描和连接超时设置
+-  添加设备准备就绪状态，设备连接成功后，并不能直接读写操作，要等设备准备就绪后，就随时可以读写操作
+-  方便简单的读写操作
+-  开启和关闭调试日志
 
 ## 要求
-1 iOS 8.0+
-2 Swift 4.0+
+-  iOS 8.0+
+-  Swift 4.0+
 
 ## 安装
 #### CocoaPods
@@ -65,9 +66,15 @@ EasyBleManager.shareInstance.bleStateChangeBlock = {(state) in
 }
 ```
 
-配置可扫描到的设备名称
+开启调试日志信息
+```swift
+EasyBleConfig.enableLog = true //默认未启动调试日志
+```
+
+配置可扫描到的设备名称/设备可被发现的Service
  ```swift
-  EasyBleManager.shareInstance.acceptableDeviceNames = ["XXX"]
+  EasyBleConfig.acceptableDeviceNames = ["XXXX"] //默认接受所有设备
+  EasyBleConfig.acceptableDeviceServiceUUIDs = ["XXXX"] //默认发现设备所有的Service
 ```
 
 扫描超时回调
@@ -108,12 +115,12 @@ EasyBleManager.shareInstance.deviceReadyBlock = {(_) in
 扫描设备/停止扫描
 ```swift
 EasyBleManager.shareInstance.scanForDevices()//扫描设备
-BleManager.shareInstance.stopScan()//停止扫描
+EasyBleManager.shareInstance.stopScan()//停止扫描
 ```
 
 连接设备
 ```swift
-BleManager.shareInstance.connectDevice(device)
+EasyBleManager.shareInstance.connectDevice(device)
 ```
 
 读取数据
@@ -140,7 +147,7 @@ device?.writeDevice("设备特性uuid", bytes: bytes) { (success) in
 ```
 
 ## 最后
-使用过程中如果有任何问题和建议都可以随时联系我，我的邮箱：344185723@qq.com
+使用过程中如果有任何问题和建议都可以随时联系我，我的邮箱 344185723@qq.com
 愿大家都可以开开心心的写代码！
 
 
