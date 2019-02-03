@@ -8,7 +8,7 @@
 
 import UIKit
 
-let DeviceVersion = "XXXX"
+let DeviceVersion = "2A28"
 let DeviceMode = "XXXX"
 
 class ViewController: UIViewController {
@@ -25,7 +25,11 @@ class ViewController: UIViewController {
                 print("蓝牙状态:\(state)")
             }
             //配置可扫描到的设备名称
-            EasyBleManager.shareInstance.acceptableDeviceNames = ["UFO"]
+            EasyBleConfig.acceptableDeviceNames = ["UFO"]
+            //配置设备可发现的serviceUUIDs
+            EasyBleConfig.acceptableDeviceServiceUUIDs = ["180A"]
+            //开启调试日志信息
+            EasyBleConfig.enableLog = true
             //扫描超时加调
             EasyBleManager.shareInstance.bleScanTimeoutBlock = {
                 print("扫描超时")

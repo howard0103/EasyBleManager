@@ -47,6 +47,7 @@ extension EasyBleDevice {
         let characteristic = self.characteristicWithUUID(uuid)
         guard let myCharacteristic = characteristic  else {
             complete(nil)
+            debug_log("没有发现该特性")
             return
         }
         peripheral.readValue(for: myCharacteristic)
@@ -56,7 +57,10 @@ extension EasyBleDevice {
         guard let peripheral = self.peripheral else { return }
         writeBlockDic[uuid] = writeDeviceBlock
         let characteristic = self.characteristicWithUUID(uuid)
-        guard let myCharacteristic = characteristic  else { return }
+        guard let myCharacteristic = characteristic  else {
+            debug_log("没有发现该特性")
+            return
+        }
         let data = Data(bytes: bytes, count: bytes.count)
         peripheral.writeValue(data, for: myCharacteristic, type: CBCharacteristicWriteType.withResponse)
     }
@@ -80,7 +84,7 @@ extension EasyBleDevice {
 extension EasyBleDevice: CBPeripheralDelegate {
     //发现设备服务协议
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        print("发现服务")
+        debug_log("发现服务")
         guard let services = peripheral.services else { return }
         needDiscoverServices = NSMutableArray(array: services)
         for service in services {
@@ -89,11 +93,11 @@ extension EasyBleDevice: CBPeripheralDelegate {
     }
     //发现服务下的特性值协议
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        print("发现特性")
+        debug_log("发现特性")
         if needDiscoverServices != nil {
             needDiscoverServices?.remove(service)
             if needDiscoverServices!.count <= 0  {
-                print("设备准备就绪")
+                debug_log("设备准备就绪")
                 let bleDevice = EasyBleDevice(peripheral)
                 self.delegate?.deviceDidBecomeReady(bleDevice)
             }

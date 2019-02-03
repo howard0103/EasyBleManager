@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62703EF32206C59500C50804 /* EasyBleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62703EF22206C59500C50804 /* EasyBleConfig.swift */; };
 		62CAEE7A22041D4C00850E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CAEE7922041D4C00850E10 /* AppDelegate.swift */; };
 		62CAEE7C22041D4C00850E10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CAEE7B22041D4C00850E10 /* ViewController.swift */; };
 		62CAEE7F22041D4C00850E10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62CAEE7D22041D4C00850E10 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		62703EF22206C59500C50804 /* EasyBleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBleConfig.swift; sourceTree = "<group>"; };
 		62CAEE7622041D4C00850E10 /* EasyBleManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBleManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62CAEE7922041D4C00850E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62CAEE7B22041D4C00850E10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				62CAEE8C22041E0300850E10 /* EasyBleManager.swift */,
 				62CBD5DA22058BB8008C5A1F /* EasyBleDefines.swift */,
 				62CAEE9122044C4100850E10 /* EasyBleDevice.swift */,
+				62703EF22206C59500C50804 /* EasyBleConfig.swift */,
 			);
 			path = Source;
 			sourceTree = SOURCE_ROOT;
@@ -166,6 +169,7 @@
 				62CAEE7A22041D4C00850E10 /* AppDelegate.swift in Sources */,
 				62CAEE8D22041E0300850E10 /* EasyBleManager.swift in Sources */,
 				62CBD5DB22058BB8008C5A1F /* EasyBleDefines.swift in Sources */,
+				62703EF32206C59500C50804 /* EasyBleConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

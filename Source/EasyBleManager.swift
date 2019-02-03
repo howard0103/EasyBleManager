@@ -36,8 +36,6 @@ open class EasyBleManager: NSObject {
     public var bleConnectTimeoutBlock:(() -> Void)?
     //设备所有特性已经获取完毕，可以随时读写操作
     public var deviceReadyBlock:((_ device: EasyBleDevice) -> Void)?
-    //限定扫描到设备的名字
-    public var acceptableDeviceNames: [String]?
     //扫描超时时间
     public var scanTimeoutInterval: TimeInterval!
     //连接超时时间
@@ -181,8 +179,8 @@ extension EasyBleManager: CBCentralManagerDelegate {
     }
     //扫描成功协议
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("发现设备:\(peripheral.name ?? "<null>")")
-        if let acceptableDeviceNames = self.acceptableDeviceNames {
+        debug_log("发现设备:\(peripheral.name ?? "<null>")")
+        if let acceptableDeviceNames = EasyBleConfig.acceptableDeviceNames {
             if !(acceptableDeviceNames.contains(peripheral.name ?? "")) {
                 return
             }
@@ -194,21 +192,31 @@ extension EasyBleManager: CBCentralManagerDelegate {
     }
     //连接成功协议
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("连接成功")
+        debug_log("连接成功")
         self.currentPeripheral = peripheral
         let bleDevice = self.deviceWithPeripheral(peripheral)
         guard let device = bleDevice else { return }
         self.removeDeviceFromConnectQueue(device)
         self.connectedDevices.add(device)
         peripheral.delegate = device
-        peripheral.discoverServices(nil)
+        var services: [CBUUID]?
+        if let serviceUUIDs =  EasyBleConfig.acceptableDeviceServiceUUIDs {
+            if !(serviceUUIDs.isEmpty) {
+                services = [CBUUID]()
+                for uuid in serviceUUIDs {
+                    let cbUUID = CBUUID(string: uuid)
+                    services?.append(cbUUID)
+                }
+            }
+        }
+        peripheral.discoverServices(services)
         if self.bleConnectSuccessBlock != nil{
             self.bleConnectSuccessBlock!(device)
         }
     }
     //连接失败协议
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        print("连接失败")
+        debug_log("连接失败")
         let bleDevice = self.deviceWithPeripheral(peripheral)
         guard let device = bleDevice else { return }
         self.removeDeviceFromConnectQueue(device)

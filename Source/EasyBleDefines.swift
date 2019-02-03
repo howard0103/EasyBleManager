@@ -11,3 +11,9 @@ import Foundation
 
 let defaultScanTimeoutInterval = 60.0
 let defaultConnectTimeoutInterval = 60.0
+
+func debug_log(_ msg: String) {
+    if EasyBleConfig.enableLog {
+        print(msg)
+    }
+}
