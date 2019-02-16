@@ -9,7 +9,7 @@
 import UIKit
 
 let DeviceVersion = "2A28"
-let DeviceMode = "XXXX"
+let DeviceBattery = "2A19"
 
 class ViewController: UIViewController {
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
                 print("蓝牙状态:\(state)")
             }
             //配置可扫描到的设备名称
-            EasyBleConfig.acceptableDeviceNames = ["UFO"]
+            EasyBleConfig.acceptableDeviceNames = ["LUNA 3"]
             //配置设备可发现的serviceUUIDs
             EasyBleConfig.acceptableDeviceServiceUUIDs = ["180A"]
             //开启调试日志信息
@@ -68,16 +68,26 @@ class ViewController: UIViewController {
         bleDevice?.readDeviceInfo(DeviceVersion, complete: { (value) in
             var versionString = ""
             if value != nil {
-                versionString = String.init(data: value!, encoding: String.Encoding.utf8) ?? ""
+                let versionHexString =  EasyBleHelper.hexString(data: value!)
+                versionString = EasyBleHelper.stringFromHexString(hex: versionHexString) ?? ""
             }
             print("设备版本号:\(versionString)")
+        })
+        
+        bleDevice?.readDeviceInfo(DeviceBattery, complete: { (value) in
+            var battery = 0
+            if value != nil {
+                let batteryHexString =  EasyBleHelper.hexString(data: value!)
+                battery = EasyBleHelper.numberFromHexString(hex: batteryHexString)?.intValue ?? 0
+            }
+            print("设备电量:\(battery)")
         })
     }
     //向设备写入数据
     @IBAction func writeData(_ sender: Any) {
         let bleDevice = EasyBleManager.shareInstance.connectedDevice()
         let bytes: [UInt8] = [0x10]
-        bleDevice?.writeDevice(DeviceMode, bytes: bytes) { (success) in
+        bleDevice?.writeDevice(DeviceBattery, bytes: bytes) { (success) in
             if success {
                 print("写入成功")
             } else {

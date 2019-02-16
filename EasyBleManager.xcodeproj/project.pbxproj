@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		622595AC2217DF6F00579CD6 /* EasyBleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622595AB2217DF6F00579CD6 /* EasyBleHelper.swift */; };
 		62703EF32206C59500C50804 /* EasyBleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62703EF22206C59500C50804 /* EasyBleConfig.swift */; };
 		62CAEE7A22041D4C00850E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CAEE7922041D4C00850E10 /* AppDelegate.swift */; };
 		62CAEE7C22041D4C00850E10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CAEE7B22041D4C00850E10 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		622595AB2217DF6F00579CD6 /* EasyBleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyBleHelper.swift; sourceTree = "<group>"; };
 		62703EF22206C59500C50804 /* EasyBleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBleConfig.swift; sourceTree = "<group>"; };
 		62CAEE7622041D4C00850E10 /* EasyBleManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBleManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62CAEE7922041D4C00850E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,10 +81,11 @@
 		62CAEE8B22041DF100850E10 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				62CAEE8C22041E0300850E10 /* EasyBleManager.swift */,
 				62CBD5DA22058BB8008C5A1F /* EasyBleDefines.swift */,
-				62CAEE9122044C4100850E10 /* EasyBleDevice.swift */,
 				62703EF22206C59500C50804 /* EasyBleConfig.swift */,
+				62CAEE8C22041E0300850E10 /* EasyBleManager.swift */,
+				62CAEE9122044C4100850E10 /* EasyBleDevice.swift */,
+				622595AB2217DF6F00579CD6 /* EasyBleHelper.swift */,
 			);
 			path = Source;
 			sourceTree = SOURCE_ROOT;
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				622595AC2217DF6F00579CD6 /* EasyBleHelper.swift in Sources */,
 				62CAEE7C22041D4C00850E10 /* ViewController.swift in Sources */,
 				62CAEE9222044C4100850E10 /* EasyBleDevice.swift in Sources */,
 				62CAEE7A22041D4C00850E10 /* AppDelegate.swift in Sources */,
